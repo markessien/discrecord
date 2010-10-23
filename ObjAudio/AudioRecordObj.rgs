@@ -1,0 +1,34 @@
+HKCR
+{
+	AudioRecord.AudioRecordObj.1 = s 'AudioRecordObj Class'
+	{
+		CLSID = s '{01AD1373-8240-4926-BC8F-331845EC1F70}'
+	}
+	AudioRecord.AudioRecordObj = s 'AudioRecordObj Class'
+	{
+		CLSID = s '{01AD1373-8240-4926-BC8F-331845EC1F70}'
+		CurVer = s 'AudioRecord.AudioRecordObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {01AD1373-8240-4926-BC8F-331845EC1F70} = s 'AudioRecordObj Class'
+		{
+			ProgID = s 'AudioRecord.AudioRecordObj.1'
+			VersionIndependentProgID = s 'AudioRecord.AudioRecordObj'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{B53696AB-693D-452E-8AA5-7353932188AE}'
+			'Version' = s '1.0'
+		}
+	}
+}

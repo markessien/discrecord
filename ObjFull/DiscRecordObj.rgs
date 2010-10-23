@@ -1,0 +1,34 @@
+HKCR
+{
+	DiscRecord.DiscRecordObj.1 = s 'DiscRecordObj Class'
+	{
+		CLSID = s '{2A708B0E-9289-446B-A892-697C6803AF3A}'
+	}
+	DiscRecord.DiscRecordObj = s 'DiscRecordObj Class'
+	{
+		CLSID = s '{2A708B0E-9289-446B-A892-697C6803AF3A}'
+		CurVer = s 'DiscRecord.DiscRecordObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2A708B0E-9289-446B-A892-697C6803AF3A} = s 'DiscRecordObj Class'
+		{
+			ProgID = s 'DiscRecord.DiscRecordObj.1'
+			VersionIndependentProgID = s 'DiscRecord.DiscRecordObj'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{49520E94-02E9-45CC-BD4C-41274ACA4538}'
+			'Version' = s '1.0'
+		}
+	}
+}

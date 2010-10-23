@@ -1,0 +1,26 @@
+HKCR
+{
+	AudioRecord.Test.1 = s 'Test Class'
+	{
+		CLSID = s '{182B7ECB-2DA1-4774-94D6-0E7DA59F57FC}'
+	}
+	AudioRecord.Test = s 'Test Class'
+	{
+		CLSID = s '{182B7ECB-2DA1-4774-94D6-0E7DA59F57FC}'
+		CurVer = s 'AudioRecord.Test.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {182B7ECB-2DA1-4774-94D6-0E7DA59F57FC} = s 'Test Class'
+		{
+			ProgID = s 'AudioRecord.Test.1'
+			VersionIndependentProgID = s 'AudioRecord.Test'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{B53696AB-693D-452E-8AA5-7353932188AE}'
+		}
+	}
+}

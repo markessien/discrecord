@@ -1,0 +1,245 @@
+// AudioRecord.idl : IDL source for AudioRecord.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (AudioRecord.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+[
+	uuid(B53696AB-693D-452E-8AA5-7353932188AE),
+	version(1.0),
+	helpstring("InetAudioBurner")
+]
+library AUDIORECORDLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	
+		typedef enum DiscType
+	{
+		discCDRW,
+		discCDR,
+		discCD,
+		discDVD,
+		discCDI,
+		discCDXA
+	} EnumDiscType;
+	
+	typedef enum DiscState
+	{
+		discNotAvailable,
+		discEmpty,
+		discOpen,
+		discClosed
+	} EnumDiscState;
+	
+	typedef enum Status
+	{
+		// actions
+		statusNothing = 0,
+		statusWritingISO,
+		statusWritingData,
+		statusSyncingCache,
+		statusClosingTrack,
+		statusClosingSession,
+		statusSendingOPC,
+		statusSessionInit,
+		statusTrackInit,
+		statusUserAbort,
+		statusEject,
+		statusInitializing,
+		statusComplete,
+
+		// errors
+		statusErrorISOFileOpen,
+		statusFileOpenFailed,
+		statusErrorReadFailed,
+		statusErrorDeviceNotReady,
+		statusErrorIO,
+		statusErrorModePage,
+		statusErrorTrackData,
+		statusErrorSessionData,
+		statusErrorNoASPI,
+		statusErrorAddr,
+		statusErrorDiscSpace,
+		statusErrorNotWriteable,
+		statusErrorCueSheet,
+		statusErrorReadDisc
+	} EnumStatus;
+	
+	typedef enum StatusType
+	{
+		statusMessage = 0,
+		statusWarning,
+		statusError,
+		statusTrace
+	} EnumStatusType;
+	
+	typedef enum Communication
+	{
+		commASPI,
+		commSPTI
+	} EnumCommunication;
+	
+	typedef enum WriteType
+	{
+		writeTAO = 0,
+		writeSAO = 1
+	} EnumWriteType;
+	
+	typedef enum Feature
+	{
+		featureCDR,
+		featureCDRW,
+		featureDVDRAM,
+		featureDVDROM,
+		featureDVDR,
+		featureBufferProtect,
+		featureTAO,
+		featureDAO,
+		featureSAO
+	} EnumFeature;
+	
+	typedef enum FeatureSupport
+	{
+		featureUnknown,
+		featureNotSupported,
+		featureSupported
+	} EnumFeatureSupport;
+
+	[
+		object,
+		uuid(48C77DF0-CB4A-47C6-BDA3-FD6C8401556A),
+		dual,
+		helpstring("IAudioRecordObj-Schnittstelle"),
+		pointer_default(unique)
+	]
+	interface IAudioRecordObj : IDispatch
+	{
+		[id(1), helpstring("Methode ListDevices")] HRESULT ListDevices();
+		[id(2), helpstring("Methode Initialize")] HRESULT Initialize();
+		[id(3), helpstring("Methode FileSelectDialog")] HRESULT FileSelectDialog([in] long HwndParent, [in] VARIANT_BOOL IsSaveDialog, [in] BSTR FilterMask, [in] BSTR DefaultExt, [in] long nFilterIndex, [out, retval] BSTR * pResult);
+		[propget, id(4), helpstring("Eigenschaft Duration")] HRESULT Duration([out, retval] double *pVal);
+		[propget, id(5), helpstring("Eigenschaft Progress")] HRESULT Progress([out, retval] double *pVal);
+		[propget, id(6), helpstring("Eigenschaft CurrentDevice")] HRESULT CurrentDevice([out, retval] long *pVal);
+		[propput, id(6), helpstring("Eigenschaft CurrentDevice")] HRESULT CurrentDevice([in] long newVal);
+		[id(7), helpstring("Methode EjectDevice")] HRESULT EjectDevice([in] VARIANT_BOOL bEject);
+		[id(8), helpstring("Methode AbortBurn")] HRESULT AbortBurn();
+		
+		
+		[propget, id(15), helpstring("Eigenschaft DiscType")] HRESULT DiscType([out, retval] EnumDiscType *pVal);
+		[propget, id(16), helpstring("Eigenschaft DiscState")] HRESULT DiscState([out, retval] EnumDiscState *pVal);
+		[propget, id(17), helpstring("Eigenschaft DiscCapacity")] HRESULT DiscCapacity([out, retval] long *pVal);
+		[propget, id(18), helpstring("Eigenschaft WriteSpeed")] HRESULT WriteSpeed([out, retval] long *pVal);
+		[propput, id(18), helpstring("Eigenschaft WriteSpeed")] HRESULT WriteSpeed([in] long newVal);
+		[id(19), helpstring("Methode ListAvailableWriteSpeeds")] HRESULT ListAvailableWriteSpeeds();
+		[id(20), helpstring("Methode DriveBufferInfo")] HRESULT DriveBufferInfo([out] long * BufferSize, [out] long * BufferFree);
+		[propget, id(21), helpstring("Eigenschaft TestMode")] HRESULT TestMode([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(21), helpstring("Eigenschaft TestMode")] HRESULT TestMode([in] VARIANT_BOOL newVal);
+		[propget, id(22), helpstring("Eigenschaft DiscSize")] HRESULT DiscSize([out, retval] long *pVal);
+		[propget, id(23), helpstring("Eigenschaft EjectWhenDone")] HRESULT EjectWhenDone([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(23), helpstring("Eigenschaft EjectWhenDone")] HRESULT EjectWhenDone([in] VARIANT_BOOL newVal);
+		
+		[id(25), helpstring("Methode ClearDirectoryStructure")] HRESULT ClearDirectoryStructure();
+		
+		
+		
+		
+		[id(31), helpstring("Methode AddAudioTrack")] HRESULT AddAudioTrack([in] BSTR SourceFile, [out, retval] double * pdDuration);
+		[id(32), helpstring("Methode BurnAudioCD")] HRESULT BurnAudioCD();
+	
+		[id(34), helpstring("Methode AbortFileScan")] HRESULT AbortFileScan();
+		[id(35), helpstring("Methode ListAudioTracks")] HRESULT ListAudioTracks();
+		[propget, id(36), helpstring("Eigenschaft TotalAudioTrackDuration")] HRESULT TotalAudioTrackDuration([out, retval] double *pVal);
+		[propget, id(37), helpstring("Eigenschaft TotalFileSize")] HRESULT TotalFileSize([out, retval] double *pVal);
+		[propget, id(38), helpstring("Eigenschaft DiscCapacitySeconds")] HRESULT DiscCapacitySeconds([out, retval] double *pVal);
+		[propget, id(39), helpstring("Eigenschaft CurTrack")] HRESULT CurTrack([out, retval] long *pVal);
+		[propget, id(40), helpstring("Eigenschaft CurLBA")] HRESULT CurLBA([out, retval] long *pVal);
+		[propget, id(41), helpstring("Eigenschaft FileBufferSize")] HRESULT FileBufferSize([out, retval] long *pVal);
+		[propget, id(42), helpstring("Eigenschaft FileBufferUsed")] HRESULT FileBufferUsed([out, retval] long *pVal);
+		[propget, id(43), helpstring("Eigenschaft TimeElapsed")] HRESULT TimeElapsed([out, retval] double *pVal);
+		[id(44), helpstring("Methode RemoveAudioTrack")] HRESULT RemoveAudioTrack([in] long Index);
+		[propget, id(45), helpstring("Eigenschaft BurnProof")] HRESULT BurnProof([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(45), helpstring("Eigenschaft BurnProof")] HRESULT BurnProof([in] VARIANT_BOOL newVal);
+		[id(46), helpstring("Methode MoveAudioTrack")] HRESULT MoveAudioTrack([in] long Index, [in] long NewIndex);
+		[propget, id(47), helpstring("Eigenschaft DurationTime")] HRESULT DurationTime([out, retval] double *pVal);
+		[propget, id(48), helpstring("Eigenschaft ProgressTime")] HRESULT ProgressTime([out, retval] double *pVal);
+		[propget, id(49), helpstring("Eigenschaft AudioPause")] HRESULT AudioPause([out, retval] double *pVal);
+		[propput, id(49), helpstring("Eigenschaft AudioPause")] HRESULT AudioPause([in] double newVal);
+		[id(50), helpstring("Methode StartDiscErase")] HRESULT StartDiscErase([in] VARIANT_BOOL QuickErase);
+		[propget, id(51), helpstring("Eigenschaft EraseProgress")] HRESULT EraseProgress([out, retval] long *pVal);
+		[propget, id(52), helpstring("Eigenschaft CommMethod")] HRESULT CommMethod([out, retval] EnumCommunication *pVal);
+		[propput, id(52), helpstring("Eigenschaft CommMethod")] HRESULT CommMethod([in] EnumCommunication newVal);
+		[propget, id(53), helpstring("Eigenschaft PreferredCommMethod")] HRESULT PreferredCommMethod([out, retval] EnumCommunication *pVal);
+		[propget, id(54), helpstring("Eigenschaft WriteType")] HRESULT WriteType([out, retval] EnumWriteType *pVal);
+		[propput, id(54), helpstring("Eigenschaft WriteType")] HRESULT WriteType([in] EnumWriteType newVal);
+		[propget, id(55), helpstring("Eigenschaft AudioTrackDuration")] HRESULT AudioTrackDuration([in] long Index, [out, retval] double *pVal);
+		[id(56), helpstring("Methode GetDriveInfo")] HRESULT GetDriveInfo([out] BSTR * DriveName, [out] BSTR * FirmwareVersion, [out]  long * BufferSize, [out]  BSTR * Date, [out] BSTR  * SerialNumber);
+		[id(57), helpstring("Methode ListAvailableReadSpeeds")] HRESULT ListAvailableReadSpeeds();
+		[propget, id(58), helpstring("Eigenschaft ReadFeatureSupported")] HRESULT ReadFeatureSupported([in] EnumFeature FeatureName, [out, retval] EnumFeatureSupport *pVal);
+		[propget, id(59), helpstring("Eigenschaft WriteFeatureSupported")] HRESULT WriteFeatureSupported([in] EnumFeature FeatureName, [out, retval] EnumFeatureSupport *pVal);
+		
+	};
+
+	[
+		uuid(262CCA6C-01C2-4585-8123-976D20937E98),
+		helpstring("_IAudioRecordObjEreignisschnittstelle")
+	]
+	dispinterface _IAudioRecordObjEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("Methode DeviceListed")] HRESULT DeviceListed([in] BSTR Name, [in] BSTR Adapter);
+			[id(2), helpstring("Methode FileScanned")] HRESULT FileScanned([in] BSTR FilePath, [in] BSTR PathOnCD, [in] long FileSize);
+			[id(3), helpstring("Methode StatusChange")] HRESULT StatusChange([in] BSTR NewStatusString, [in] EnumStatus NewStatus, [in] EnumStatusType StatusTypeVal);
+			[id(4), helpstring("Methode WriteSpeedListed")] HRESULT WriteSpeedListed([in] long SpeedFactor, [in] BSTR SpeedDesc);
+			[id(5), helpstring("Methode Complete")] HRESULT Complete();
+			[id(6), helpstring("Methode FileInDirectoryListed")] HRESULT FileInDirectoryListed([in] BSTR Name, [in] BSTR PathOnCD, [in] BSTR LocalPath, [in] VARIANT_BOOL IsDirectory, [in] double FileSize);
+			[id(7), helpstring("Methode AudioTrackListed")] HRESULT AudioTrackListed([in] long Index, [in] BSTR LocalPath, [in] double Duration);
+			[id(8), helpstring("Methode DiscStatusChanged")] HRESULT DiscStatusChanged();
+			[id(9), helpstring("Methode ReadSpeedListed")] HRESULT ReadSpeedListed([in] long SpeedFactor, [in] BSTR SpeedDesc);
+
+	};
+	[
+		object,
+		uuid(6AC88A22-69A7-4099-B712-1BD2BF32EA3F),
+		dual,
+		helpstring("ITest Interface"),
+		pointer_default(unique)
+	]
+	interface ITest : IDispatch
+	{
+	};
+
+	[
+		uuid(01AD1373-8240-4926-BC8F-331845EC1F70),
+		helpstring("InetAudioBurner")
+	]
+	coclass AudioRecordObj
+	{
+		[default] interface IAudioRecordObj;
+		[default, source] dispinterface _IAudioRecordObjEvents;
+	};
+	[
+		uuid(4EA9C5E0-0B3D-43C6-8D96-6A3A76B8BB28),
+		helpstring("_ITestEvents Interface")
+	]
+	dispinterface _ITestEvents
+	{
+		properties:
+		methods:
+	};
+
+	[
+		uuid(182B7ECB-2DA1-4774-94D6-0E7DA59F57FC),
+		helpstring("Test Class")
+	]
+	coclass Test
+	{
+		[default] interface ITest;
+		[default, source] dispinterface _ITestEvents;
+	};
+};

@@ -1,0 +1,26 @@
+HKCR
+{
+	DiscRecord.AudioItem.1 = s 'AudioItem Class'
+	{
+		CLSID = s '{5FD6E998-04F9-4E9B-AFAF-7E6B16E65773}'
+	}
+	DiscRecord.AudioItem = s 'AudioItem Class'
+	{
+		CLSID = s '{5FD6E998-04F9-4E9B-AFAF-7E6B16E65773}'
+		CurVer = s 'DiscRecord.AudioItem.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {5FD6E998-04F9-4E9B-AFAF-7E6B16E65773} = s 'AudioItem Class'
+		{
+			ProgID = s 'DiscRecord.AudioItem.1'
+			VersionIndependentProgID = s 'DiscRecord.AudioItem'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{49520E94-02E9-45CC-BD4C-41274ACA4538}'
+		}
+	}
+}

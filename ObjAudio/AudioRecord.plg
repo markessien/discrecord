@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Erstellungsprotokoll</h1>
+<h3>
+--------------------Konfiguration: AudioRecord - Win32 Release MinDependency--------------------
+</h3>
+<h3>Befehlszeilen</h3>
+Erstellen der temporären Datei  "C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP12.tmp" mit Inhalten
+[
+/nologo /MT /W3 /GX /O1 /I "..\\" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /D "AUDIO_CD_ONLY" /Fo"ReleaseMinDependency/" /Fd"ReleaseMinDependency/" /FD /c 
+"X:\Dev\OutsourcedProjects\Burn\DiscRecord\ObjAudio\AudioRecordObj.cpp"
+]
+Creating command line "cl.exe @C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP12.tmp" 
+Erstellen der temporären Datei  "C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP13.tmp" mit Inhalten
+[
+..\..\AudioDecompress\Release\AudioDecompress.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"ReleaseMinDependency/AudioRecord.pdb" /machine:I386 /def:".\AudioRecord.def" /out:"ReleaseMinDependency/AudioRecord.dll" /implib:"ReleaseMinDependency/AudioRecord.lib" 
+.\ReleaseMinDependency\ASPI.obj
+.\ReleaseMinDependency\AudioRecord.obj
+.\ReleaseMinDependency\AudioRecordObj.obj
+.\ReleaseMinDependency\CircularBuffer.obj
+.\ReleaseMinDependency\Disc.obj
+.\ReleaseMinDependency\DiscAudio.obj
+.\ReleaseMinDependency\DiscWriter.obj
+.\ReleaseMinDependency\Helper.obj
+.\ReleaseMinDependency\License.obj
+.\ReleaseMinDependency\SCSI.obj
+.\ReleaseMinDependency\SPTI.obj
+.\ReleaseMinDependency\StdAfx.obj
+.\ReleaseMinDependency\SyncWait.obj
+.\ReleaseMinDependency\AudioRecord.res
+]
+Erstellen der Befehlzeile "link.exe @C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP13.tmp"
+Erstellen der temporären Datei  "C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP14.bat" mit Inhalten
+[
+@echo off
+regsvr32 /s /c ".\ReleaseMinDependency\AudioRecord.dll"
+echo regsvr32 exec. time > ".\ReleaseMinDependency\regsvr32.trg"
+]
+Erstellen der Befehlzeile "C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP14.bat"
+Kompilierung läuft...
+AudioRecordObj.cpp
+Linker-Vorgang läuft...
+   Bibliothek ReleaseMinDependency/AudioRecord.lib und Objekt ReleaseMinDependency/AudioRecord.exp wird erstellt
+<h3>Ausgabefenster</h3>
+Performing registration
+
+
+
+<h3>Ergebnisse</h3>
+AudioRecord.dll - 0 Fehler, 0 Warnung(en)
+</pre>
+</body>
+</html>

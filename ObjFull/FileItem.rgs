@@ -1,0 +1,26 @@
+HKCR
+{
+	DiscRecord.FileItem.1 = s 'FileItem Class'
+	{
+		CLSID = s '{B77A6D02-8857-4631-99C6-C2663F676C0C}'
+	}
+	DiscRecord.FileItem = s 'FileItem Class'
+	{
+		CLSID = s '{B77A6D02-8857-4631-99C6-C2663F676C0C}'
+		CurVer = s 'DiscRecord.FileItem.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B77A6D02-8857-4631-99C6-C2663F676C0C} = s 'FileItem Class'
+		{
+			ProgID = s 'DiscRecord.FileItem.1'
+			VersionIndependentProgID = s 'DiscRecord.FileItem'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{49520E94-02E9-45CC-BD4C-41274ACA4538}'
+		}
+	}
+}

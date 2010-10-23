@@ -1,0 +1,67 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DiscRecord - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP311.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\\" /I "Include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /FR"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Personal\Dev\OutsourcedProjects\Burn\DiscRecord\ObjFull\AudioItem.cpp"
+"C:\Personal\Dev\OutsourcedProjects\Burn\DiscRecord\AudioCD\DiscAudio.cpp"
+"C:\Personal\Dev\OutsourcedProjects\Burn\DiscRecord\ObjFull\DiscRecordObj.cpp"
+]
+Creating command line "cl.exe @C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP311.tmp" 
+Creating temporary file "C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP312.tmp" with contents
+[
+..\..\AudioDecompress\Debug\AudioDecompress.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/DiscRecord.pdb" /debug /machine:I386 /def:".\DiscRecord.def" /out:"Debug/DiscRecord.dll" /implib:"Debug/DiscRecord.lib" /pdbtype:sept 
+.\Debug\ASPI.obj
+.\Debug\AudioItem.obj
+.\Debug\BinaryStream.obj
+.\Debug\CircularBuffer.obj
+.\Debug\Disc.obj
+.\Debug\DiscAudio.obj
+.\Debug\DiscImage.obj
+.\Debug\DiscISO9660.obj
+.\Debug\DiscParser.obj
+.\Debug\DiscRecord.obj
+.\Debug\DiscRecordObj.obj
+.\Debug\DiscWriter.obj
+.\Debug\DriveLetterMap.obj
+.\Debug\FileItem.obj
+.\Debug\FileRecord.obj
+.\Debug\Helper.obj
+.\Debug\SCSI.obj
+.\Debug\SPTI.obj
+.\Debug\StdAfx.obj
+.\Debug\SyncWait.obj
+.\Debug\DiscRecord.res
+]
+Creating command line "link.exe @C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP312.tmp"
+Creating temporary file "C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP313.bat" with contents
+[
+@echo off
+regsvr32 /s /c ".\Debug\DiscRecord.dll"
+echo regsvr32 exec. time > ".\Debug\regsvr32.trg"
+]
+Creating command line "C:\DOKUME~1\Mark\LOKALE~1\Temp\RSP313.bat"
+Compiling...
+DiscAudio.cpp
+Generating Code...
+Compiling...
+AudioItem.cpp
+DiscRecordObj.cpp
+Generating Code...
+Linking...
+<h3>Output Window</h3>
+Performing registration
+
+
+
+<h3>Results</h3>
+DiscRecord.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
